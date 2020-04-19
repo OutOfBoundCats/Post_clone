@@ -63,7 +63,7 @@ public class Login {
 			AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Empty password", "Please Enter Password");
 		}if(TNS_ComboBox.getValue()== null) {
 			AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Empty TNS details", "Please Enter TNS Details");
-		}else {
+		}else if(UserName.getText().isEmpty()==false && Password.getText().isEmpty()==false && TNS_ComboBox.getValue()!= null) {
 			UserName.setDisable(true);
 			Password.setDisable(true);
 			login_button.setDisable(true);

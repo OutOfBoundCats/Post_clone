@@ -61,6 +61,8 @@ public class Login {
 		login_button.setDisable(true);
 		TNS_ComboBox.setDisable(true);
 		
+		
+		
 	}
 	
 	public void Initialize() {

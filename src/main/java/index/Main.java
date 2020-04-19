@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -55,8 +56,12 @@ public class Main extends Application{
     public void start(Stage stage) throws Exception{
 		Main m=new Main();
 		Class cls = m.getClass();
-		URL url = cls.getResource("Login.fxml");
+		URL url = cls.getResource("resources/Login.fxml");
 	      System.out.println("Value = " + url);
+	      
+	      Image icon=new Image("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/RClone_Icon.png");
+	      stage.getIcons().add(icon);
+	     
 	      
 	    stage.setTitle("RClone");
 	    /*** Loading Login screen in memory **/
@@ -73,7 +78,7 @@ public class Main extends Application{
         stage.setScene(scene);
         /*** Displaying scene **/
         stage.show();
-        System.out.println("In mainmethod "+username);
+        
       
     }
 

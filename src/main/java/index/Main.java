@@ -72,9 +72,6 @@ public class Main extends Application{
         Login.setTNS(TNS);
         
        
-        /*** Loading main screen in memory **/
-        FXMLLoader Main_Screen_loader = new FXMLLoader();
-        Main_Screen_loader.setLocation(new URL("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/Main_Screen.fxml"));
         /*** Setting scene  **/
         Scene scene=new Scene((Parent) loader.load());
         stage.setScene(scene);

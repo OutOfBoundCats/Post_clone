@@ -37,11 +37,15 @@ public class Cust_Printer implements pdf_print {
 	 
 	 PdfWriter writer;
 	 PdfDocument pdfDoc;
-	 Document document;
+	 public static Document document;
 	 Color[] color_arr= {ColorConstants.RED,ColorConstants.ORANGE,ColorConstants.BLACK};
 	 //PdfFont[] font_arr= {};
 	 
 	
+	public static Document getDocument() {
+		return document;
+	}
+
 	public void cust_print(String sentence, int para_head, int color) {
 		// TODO Auto-generated method stub
 		
@@ -85,7 +89,7 @@ public class Cust_Printer implements pdf_print {
 
 	}
 
-	public Document Initialize_print() throws FileNotFoundException {
+	public void Initialize_print() throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		 
 		 System.out.println(dest);
@@ -110,7 +114,7 @@ public class Cust_Printer implements pdf_print {
 		document.add(p);
 		 
 		 
-		 return document;
+		// return document;
 		
 		
 	}

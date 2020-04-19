@@ -1,6 +1,8 @@
 package index;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.lang.*;
 
@@ -36,7 +38,10 @@ public class Main extends Application{
 	public static String password;
 	public static String TNS_String;
 	public static Dictionary TNS_Mapper = new Hashtable(); 
-
+	public static Stage MainScreen=null;
+	public static Stage stage;
+	
+	
 	public static Dictionary getTNS_Mapper() {
 		return TNS_Mapper;
 	}
@@ -49,8 +54,9 @@ public class Main extends Application{
 
 
 	@Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage1) throws Exception{
 		Main m=new Main();
+		stage=stage1;
 		Class cls = m.getClass();
 		URL url = cls.getResource("resources/Login.fxml");
 	      System.out.println("Value = " + url);
@@ -72,11 +78,29 @@ public class Main extends Application{
         /*** Setting scene  **/
         Scene scene=new Scene((Parent) loader.load());
         stage.setScene(scene);
+        stage.setResizable(false);
         /*** Displaying scene **/
         stage.show();
         
       
     }
+	
+	public static void changeScence(String path) throws IOException {
+//		MainScreen=new Stage();
+//		MainScreen.setTitle("RCloe");
+//		Image icon=new Image("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/RClone_Icon.png");
+//		MainScreen.getIcons().add(icon);
+		FXMLLoader Main_Screen_loader = new FXMLLoader();
+        Main_Screen_loader.setLocation(new URL(path));
+        /*** Setting scene  **/
+        Scene scene=new Scene((Parent) Main_Screen_loader.load());
+        stage.setScene(scene);
+        stage.setResizable(false);
+        /*** Displaying scene **/
+        stage.show();
+		
+		
+	}
 
 		    
       
@@ -110,7 +134,7 @@ public class Main extends Application{
 		
 		
 		//Has to at end
-		print.close();
+		Cust_Printer.getDocument().close();
 		
 	}
 

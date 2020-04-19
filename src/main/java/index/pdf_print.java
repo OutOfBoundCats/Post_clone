@@ -16,5 +16,5 @@ public interface pdf_print {
 
 	public void cust_print(String sentence,int para_head,int color);
 	
-	public Document Initialize_print() throws FileNotFoundException;
+	public void Initialize_print() throws FileNotFoundException;
 }

@@ -3,9 +3,11 @@ package index;
 
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.concurrent.TimeUnit;
 
 import com.itextpdf.layout.Document;
 
@@ -67,7 +69,7 @@ public class Login {
 			try {
 				//we create printer to which we can print to
 				printer = new Cust_Printer();
-				print=printer.Initialize_print();
+				printer.Initialize_print();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				System.out.println("Exception occured while initialising printer in main "+e);
@@ -80,14 +82,52 @@ public class Login {
 			Oracel_Db_Connect Oracledb_Object=new Oracel_Db_Connect();
 			//getting  db connection
 			Connection db_connection=Oracledb_Object.ConnectToDatabase(username, password, TNS_Mapper_login.get(TNS_String).toString(), printer);
-			
+			if(db_connection == null) {
+				/***Uncomment below lines while using **/
+				//AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Check details", "Error establishing databse connection.Please recheck the details entered.");
+				//UserName.setDisable(false);
+				//Password.setDisable(false);
+				//login_button.setDisable(false);
+				//TNS_ComboBox.setDisable(false);
+				/**END **/
+				
+				/** Just For testing application this code exist so i can change screen eventhough database error**/
+				UserName.setDisable(true);
+				Password.setDisable(true);
+				login_button.setDisable(true);
+				TNS_ComboBox.setDisable(true);
+				/**END **/
+				
+				
+				try {
+					TimeUnit.SECONDS.sleep(2);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					loadMain();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}else if(db_connection != null) {
+				try {
+					loadMain();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			
 			
 		}
 		
 		
-		
-		
+	}
+	public static void loadMain() throws IOException {
+		Main.changeScence("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/Main_Screen.fxml");
 	}
 	
 	public void Initialize() {

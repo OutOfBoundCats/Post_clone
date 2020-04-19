@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="Login_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#on" prefHeight="456.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="index.Login">
+<Pane fx:id="Login_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="index.Login">
    <children>
       <ImageView fitHeight="456.0" fitWidth="865.0">
          <image>
@@ -22,9 +22,9 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="UserName" layoutX="663.0" layoutY="161.0" onMouseClicked="#on" promptText="UserName" />
+      <TextField fx:id="UserName" layoutX="663.0" layoutY="161.0" promptText="UserName" />
       <PasswordField fx:id="Password" layoutX="663.0" layoutY="216.0" promptText="Password" />
-      <Button fx:id="login_button" layoutX="715.0" layoutY="276.0" mnemonicParsing="false" text="Login" />
-      <ComboBox fx:id="TNS_ComboBox" layoutX="663.0" layoutY="86.0" prefHeight="25.0" prefWidth="149.0" promptText="Select TNS" />
+      <Button fx:id="login_button" layoutX="715.0" layoutY="276.0" mnemonicParsing="false" onAction="#OnLoginClick" text="Login" />
+      <ComboBox fx:id="TNS_ComboBox" layoutX="663.0" layoutY="86.0" onMouseClicked="#Initialize" prefHeight="25.0" prefWidth="149.0" promptText="Select TNS" />
    </children>
 </Pane>

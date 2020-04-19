@@ -29,7 +29,28 @@ public class Main extends Application{
 			"PROD", 
 			"VCP"
 			};
+	public static String username;
+	public static String password;
+	public static String TNS_String;
 	
+	public static void setTNS_String(String tNS) {
+		TNS_String = tNS;
+	}
+
+
+
+
+	public static void setUsername(String username) {
+		Main.username = username;
+	}
+
+
+	public static void setPassword(String password) {
+		Main.password = password;
+	}
+
+
+
 	@Override
     public void start(Stage stage) throws Exception{
 		Main m=new Main();
@@ -38,14 +59,21 @@ public class Main extends Application{
 	      System.out.println("Value = " + url);
 	      
 	    stage.setTitle("RClone");
+	    /*** Loading Login screen in memory **/
 		FXMLLoader loader = new FXMLLoader();
         loader.setLocation(new URL("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/Login.fxml")); 
+        Login.setTNS(TNS);
+        
+       
+        /*** Loading main screen in memory **/
         FXMLLoader Main_Screen_loader = new FXMLLoader();
         Main_Screen_loader.setLocation(new URL("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/Main_Screen.fxml"));
+        /*** Setting scene  **/
         Scene scene=new Scene((Parent) loader.load());
         stage.setScene(scene);
+        /*** Displaying scene **/
         stage.show();
-      
+        System.out.println("In mainmethod "+username);
       
     }
 
@@ -66,8 +94,7 @@ public class Main extends Application{
 		
 		Cust_Printer printer = null ;
 		Document print = null;
-		String username = null;
-		String password = null;
+		
 		int TNS_index = 0;
 		
 		

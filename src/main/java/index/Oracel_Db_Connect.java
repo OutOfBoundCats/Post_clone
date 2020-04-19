@@ -12,7 +12,7 @@ import com.itextpdf.layout.Document;
 
 public class Oracel_Db_Connect implements database_connect {
 
-	public Connection ConnectToDatabase(String username, String password, int TNS_index,Cust_Printer printer) {
+	public Connection ConnectToDatabase(String username, String password, String TNS,Cust_Printer printer) {
 		// TODO Auto-generated method stub
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");  

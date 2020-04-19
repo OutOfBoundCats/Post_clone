@@ -6,6 +6,8 @@ import java.lang.*;
 
 import com.itextpdf.layout.Document;
 import java.sql.Connection;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -33,22 +35,16 @@ public class Main extends Application{
 	public static String username;
 	public static String password;
 	public static String TNS_String;
-	
-	public static void setTNS_String(String tNS) {
-		TNS_String = tNS;
+	public static Dictionary TNS_Mapper = new Hashtable(); 
+
+	public static Dictionary getTNS_Mapper() {
+		return TNS_Mapper;
 	}
 
 
 
 
-	public static void setUsername(String username) {
-		Main.username = username;
-	}
 
-
-	public static void setPassword(String password) {
-		Main.password = password;
-	}
 
 
 
@@ -97,6 +93,11 @@ public class Main extends Application{
 		// finds resource relative to the class location
 	      
 		
+		TNS_Mapper.put("DEV", "Dev_key");
+		TNS_Mapper.put("STG", "STG_key");
+		TNS_Mapper.put("PROD", "prd_ikey");
+		TNS_Mapper.put("VCP", "VCP_key");
+		
 		Cust_Printer printer = null ;
 		Document print = null;
 		
@@ -105,30 +106,6 @@ public class Main extends Application{
 		
 		/**       UI             **/
 		launch(args);
-		
-		
-		try {
-			//we create printer to which we can print to
-			printer = new Cust_Printer();
-			print=printer.Initialize_print();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Exception occured while initialising printer in main "+e);
-			e.printStackTrace();
-		}
-		printer.cust_print("INSIDE MAIN", 0, 0);
-		////Establish database connection
-		//Creating object
-		Oracel_Db_Connect Oracledb_Object=new Oracel_Db_Connect();
-		//getting  db connection
-		Connection db_connection=Oracledb_Object.ConnectToDatabase(username, password, TNS_index, printer);
-		
-		
-		
-	 
-		
-		
-		
 		
 		
 		

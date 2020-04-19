@@ -19,7 +19,7 @@ public interface database_connect {
 			"VCP"
 			};
 	
-	public Connection  ConnectToDatabase(String username,String password,int TNS_index,Cust_Printer printer);
+	public Connection  ConnectToDatabase(String username,String password,String TNS,Cust_Printer printer);
 	
 	
 

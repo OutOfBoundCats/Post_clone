@@ -1,5 +1,6 @@
 package index;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -10,6 +11,8 @@ import com.itextpdf.layout.Document;
 import java.sql.Connection;
 import java.util.Dictionary;
 import java.util.Hashtable;
+
+import org.springframework.util.ResourceUtils;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -57,18 +60,27 @@ public class Main extends Application{
     public void start(Stage stage1) throws Exception{
 		Main m=new Main();
 		stage=stage1;
-		Class cls = m.getClass();
-		URL url = cls.getResource("resources/Login.fxml");
-	      System.out.println("Value = " + url);
+		
 	      
-	      Image icon=new Image("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/RClone_Icon.png");
+	      ClassLoader classLoader = this.getClass().getClassLoader();
+	      // Getting resource(File) from class loader
+	      
+	      
+	      ///Finding the pat of file in resources folder
+	      File configFile=new File(classLoader.getResource("RClone_Icon.png").getFile());
+	      System.out.println(configFile+" Found it ");
+	      
+	     // Image icon=new Image("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/RClone_Icon.png");
+	      Image icon=new Image("file:"+configFile);
 	      stage.getIcons().add(icon);
 	     
 	      
 	    stage.setTitle("RClone");
 	    /*** Loading Login screen in memory **/
 		FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(new URL("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/Login.fxml")); 
+		File LoginFXML=new File(classLoader.getResource("Login.fxml").getFile());
+	      System.out.println(LoginFXML+" Found it ");
+        loader.setLocation(new URL("file:"+LoginFXML)); 
         Login.setTNS(TNS);
         
        

@@ -1,5 +1,7 @@
 package index;
 
+import java.io.File;
+
 /**
  * @author praj4
  *
@@ -129,8 +131,16 @@ public class Login {
 		
 		
 	}
-	public static void loadMain() throws IOException {
-		Main.changeScence("file:C:/Users/praj4/Desktop/SId/Post_clone/target/classes/Main_Screen.fxml");
+	public  void loadMain() throws IOException {
+		
+		 ClassLoader classLoader = this.getClass().getClassLoader();
+	      // Getting resource(File) from class loader
+	      
+	      
+	      ///Finding the pat of file in resources folder
+	      File MainFXML=new File(classLoader.getResource("Main_Screen.fxml").getFile());
+	      System.out.println(MainFXML+" Found it ");
+		Main.changeScence("file:"+MainFXML);
 	}
 	
 	public void Initialize() {
